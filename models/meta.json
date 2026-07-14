@@ -1,0 +1,244 @@
+{
+  "cv_mae": 12.71,
+  "cv_r2": 0.8708,
+  "cv_dir_acc": 0.9125,
+  "residual_std": 4.7,
+  "n_train": 800,
+  "feature_cols": [
+    "gmp_pct",
+    "gmp_rs",
+    "gmp_momentum",
+    "total_subscription",
+    "qib_subscription",
+    "nii_subscription",
+    "retail_subscription",
+    "sub_qib_nii_ratio",
+    "issue_price",
+    "issue_price_log",
+    "issue_size_cr_log",
+    "lot_size",
+    "days_to_listing",
+    "is_sme",
+    "sector_encoded"
+  ],
+  "importances": {
+    "gmp_pct": 0.591253936290741,
+    "gmp_rs": 0.1742575466632843,
+    "gmp_momentum": 0.022645432502031326,
+    "total_subscription": 0.02853909321129322,
+    "qib_subscription": 0.015357905067503452,
+    "nii_subscription": 0.014123794622719288,
+    "retail_subscription": 0.013445336371660233,
+    "sub_qib_nii_ratio": 0.012895104475319386,
+    "issue_price": 0.033141035586595535,
+    "issue_price_log": 0.019615311175584793,
+    "issue_size_cr_log": 0.013759491965174675,
+    "lot_size": 0.012619168497622013,
+    "days_to_listing": 0.01945684477686882,
+    "is_sme": 0.013522344641387463,
+    "sector_encoded": 0.015367553569376469
+  },
+  "backtest": {
+    "months_tested": 28,
+    "avg_return_all_ipos": 34.04,
+    "avg_return_signal_ipos": 55.24,
+    "monthly": [
+      {
+        "month": "2023-07",
+        "total_ipos": 14,
+        "signal_ipos": 9,
+        "avg_return_all": 42.85,
+        "avg_return_signal": 70.65
+      },
+      {
+        "month": "2023-08",
+        "total_ipos": 17,
+        "signal_ipos": 12,
+        "avg_return_all": 34.92,
+        "avg_return_signal": 59.9
+      },
+      {
+        "month": "2023-09",
+        "total_ipos": 11,
+        "signal_ipos": 5,
+        "avg_return_all": 17.62,
+        "avg_return_signal": 51.13
+      },
+      {
+        "month": "2023-10",
+        "total_ipos": 6,
+        "signal_ipos": 6,
+        "avg_return_all": 69.2,
+        "avg_return_signal": 69.2
+      },
+      {
+        "month": "2023-11",
+        "total_ipos": 10,
+        "signal_ipos": 5,
+        "avg_return_all": 28.62,
+        "avg_return_signal": 62.11
+      },
+      {
+        "month": "2023-12",
+        "total_ipos": 8,
+        "signal_ipos": 6,
+        "avg_return_all": 23.45,
+        "avg_return_signal": 36.78
+      },
+      {
+        "month": "2024-01",
+        "total_ipos": 12,
+        "signal_ipos": 7,
+        "avg_return_all": 19.44,
+        "avg_return_signal": 50.88
+      },
+      {
+        "month": "2024-02",
+        "total_ipos": 10,
+        "signal_ipos": 7,
+        "avg_return_all": 34.99,
+        "avg_return_signal": 50.78
+      },
+      {
+        "month": "2024-03",
+        "total_ipos": 9,
+        "signal_ipos": 6,
+        "avg_return_all": 31.24,
+        "avg_return_signal": 51.84
+      },
+      {
+        "month": "2024-04",
+        "total_ipos": 11,
+        "signal_ipos": 8,
+        "avg_return_all": 28.96,
+        "avg_return_signal": 52.55
+      },
+      {
+        "month": "2024-05",
+        "total_ipos": 11,
+        "signal_ipos": 4,
+        "avg_return_all": 1.53,
+        "avg_return_signal": 35.49
+      },
+      {
+        "month": "2024-06",
+        "total_ipos": 16,
+        "signal_ipos": 11,
+        "avg_return_all": 39.13,
+        "avg_return_signal": 62.85
+      },
+      {
+        "month": "2024-07",
+        "total_ipos": 7,
+        "signal_ipos": 4,
+        "avg_return_all": 34.06,
+        "avg_return_signal": 56.93
+      },
+      {
+        "month": "2024-08",
+        "total_ipos": 6,
+        "signal_ipos": 5,
+        "avg_return_all": 24.26,
+        "avg_return_signal": 28.98
+      },
+      {
+        "month": "2024-09",
+        "total_ipos": 7,
+        "signal_ipos": 3,
+        "avg_return_all": 27.33,
+        "avg_return_signal": 73.34
+      },
+      {
+        "month": "2024-10",
+        "total_ipos": 15,
+        "signal_ipos": 11,
+        "avg_return_all": 47.85,
+        "avg_return_signal": 67.75
+      },
+      {
+        "month": "2024-11",
+        "total_ipos": 13,
+        "signal_ipos": 8,
+        "avg_return_all": 58.86,
+        "avg_return_signal": 99.2
+      },
+      {
+        "month": "2024-12",
+        "total_ipos": 13,
+        "signal_ipos": 9,
+        "avg_return_all": 33.78,
+        "avg_return_signal": 55.71
+      },
+      {
+        "month": "2025-01",
+        "total_ipos": 19,
+        "signal_ipos": 13,
+        "avg_return_all": 29.61,
+        "avg_return_signal": 49.48
+      },
+      {
+        "month": "2025-02",
+        "total_ipos": 9,
+        "signal_ipos": 6,
+        "avg_return_all": 15.17,
+        "avg_return_signal": 31.09
+      },
+      {
+        "month": "2025-03",
+        "total_ipos": 14,
+        "signal_ipos": 11,
+        "avg_return_all": 33.9,
+        "avg_return_signal": 45.99
+      },
+      {
+        "month": "2025-04",
+        "total_ipos": 5,
+        "signal_ipos": 4,
+        "avg_return_all": 35.64,
+        "avg_return_signal": 55.08
+      },
+      {
+        "month": "2025-05",
+        "total_ipos": 11,
+        "signal_ipos": 9,
+        "avg_return_all": 51.73,
+        "avg_return_signal": 62.08
+      },
+      {
+        "month": "2025-06",
+        "total_ipos": 10,
+        "signal_ipos": 6,
+        "avg_return_all": 24.51,
+        "avg_return_signal": 61.9
+      },
+      {
+        "month": "2025-07",
+        "total_ipos": 16,
+        "signal_ipos": 15,
+        "avg_return_all": 45.49,
+        "avg_return_signal": 47.54
+      },
+      {
+        "month": "2025-08",
+        "total_ipos": 10,
+        "signal_ipos": 10,
+        "avg_return_all": 54.14,
+        "avg_return_signal": 54.14
+      },
+      {
+        "month": "2025-09",
+        "total_ipos": 12,
+        "signal_ipos": 7,
+        "avg_return_all": 31.82,
+        "avg_return_signal": 60.7
+      },
+      {
+        "month": "2025-10",
+        "total_ipos": 8,
+        "signal_ipos": 7,
+        "avg_return_all": 33.12,
+        "avg_return_signal": 42.52
+      }
+    ]
+  }
+}
