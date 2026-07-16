@@ -173,7 +173,6 @@ def train(n_splits: int = 5) -> dict[str, Any]:
     for fold, (tr_idx, te_idx) in enumerate(tscv.split(X)):
         X_tr, X_te = X.iloc[tr_idx], X.iloc[te_idx]
         y_tr, y_te = y_reg.iloc[tr_idx], y_reg.iloc[te_idx]
-        y_cls_te   = y_cls.iloc[te_idx]
 
         regressor.fit(X_tr, y_tr)
         preds = regressor.predict(X_te)
