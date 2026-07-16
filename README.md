@@ -1,5 +1,7 @@
 # IPO GMP Predictor
 
+[![CI](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml) [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Predicts Indian IPO listing-day returns from pre-listing Grey Market Premium
 (GMP) and subscription data. GMP alone is the strongest available pre-listing
 signal but noisy on its own; this combines it with subscription mix (QIB/NII/

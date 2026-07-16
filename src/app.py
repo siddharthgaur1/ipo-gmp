@@ -14,13 +14,11 @@ Run:
 """
 
 import json
-import os
 import pickle
 import sqlite3
 import sys
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -28,7 +26,7 @@ import streamlit as st
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
-from model import predict_one, SECTOR_MAP, FEATURE_COLS, MODEL_DIR, DB_PATH
+from model import predict_one, SECTOR_MAP, MODEL_DIR, DB_PATH  # noqa: E402  # import must follow sys.path.insert above
 
 # ── Page config ───────────────────────────────────────────────────
 st.set_page_config(
@@ -592,7 +590,10 @@ with tab4:
         file_name="ipo_gmp_data.csv", mime="text/csv",
     )
     try:
-        import io, openpyxl
+        import io
+
+        import openpyxl  # noqa: F401  # unused directly; to_excel needs it, so its absence must raise ImportError
+
         buf = io.BytesIO()
         tdf[[c for c in tdf.columns if c not in ["year","month","gmp_accurate"]]].to_excel(buf, index=False)
         dl2.download_button(
