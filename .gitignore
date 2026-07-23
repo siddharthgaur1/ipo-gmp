@@ -19,3 +19,11 @@ models/*.pkl
 .mypy_cache/
 .ipynb_checkpoints/
 .DS_Store
+
+# Exceptions: commit the pre-built demo artifacts so the hosted app has data on
+# first load without an on-boot seed+train, which does not complete reliably on
+# Streamlit Community Cloud. Built from the deterministic synthetic seed (RNG=42)
+# with the pinned xgboost/sklearn versions, so they match what the app installs.
+!data/ipo_gmp.db
+!models/regressor.pkl
+!models/classifier.pkl
