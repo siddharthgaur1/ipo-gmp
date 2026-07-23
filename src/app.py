@@ -28,6 +28,34 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 from model import predict_one, SECTOR_MAP, MODEL_DIR, DB_PATH  # noqa: E402  # import must follow sys.path.insert above
 
+
+@st.cache_resource
+def _bootstrap() -> None:
+    """Build the demo's data and models on first boot if they are absent.
+
+    The dataset (*.db) and trained models (*.pkl) are gitignored, so a fresh
+    clone or a hosted deployment starts empty. Seeding is deterministic (RNG
+    seeded to 42) and training the XGBoost models takes ~1.5s on 800 synthetic
+    IPOs, so rebuilding on boot is cheaper than committing binaries that would
+    also risk a pickle/library-version mismatch. Everything the app shows is
+    therefore computed by the current code, not replayed from a stale artifact.
+    """
+    if not DB_PATH.exists():
+        import importlib.util  # noqa: PLC0415
+
+        seed_path = Path(__file__).resolve().parent.parent / "scripts" / "seed_data.py"
+        spec = importlib.util.spec_from_file_location("seed_data", seed_path)
+        seeder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(seeder)
+        seeder.seed()
+    if not (MODEL_DIR / "regressor.pkl").exists():
+        import model as _model  # noqa: PLC0415
+
+        _model.train()
+
+
+_bootstrap()
+
 # ── Page config ───────────────────────────────────────────────────
 st.set_page_config(
     page_title="IPO GMP Predictor",
