@@ -164,7 +164,9 @@ def load_models():
         with open(MODEL_DIR / "meta.json") as f:
             meta = json.load(f)
         return reg, clf, meta
-    except FileNotFoundError:
+    except (FileNotFoundError, pickle.UnpicklingError, ModuleNotFoundError, AttributeError):
+        # Missing, or a pickle that won't load under a different library version.
+        # Degrade to the data-only views rather than crashing the whole app.
         return None, None, None
 
 

@@ -41,6 +41,17 @@ from xgboost import XGBClassifier, XGBRegressor
 
 warnings.filterwarnings("ignore")
 
+# The training log prints Unicode (→, ², %) — harmless on Linux/Streamlit, but a
+# hard crash on Windows' default cp1252 console. Force UTF-8 so `python -m` and
+# the on-boot build work on every platform.
+if sys.stdout and hasattr(sys.stdout, "reconfigure") and (
+    sys.stdout.encoding or ""
+).lower() != "utf-8":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:  # noqa: BLE001 - non-reconfigurable stream; fall through
+        pass
+
 DB_PATH   = Path(__file__).resolve().parent.parent / "data" / "ipo_gmp.db"
 MODEL_DIR = Path(__file__).resolve().parent.parent / "models"
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
