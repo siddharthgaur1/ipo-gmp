@@ -1,6 +1,34 @@
 # IPO GMP Predictor
 
-[![CI](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml) [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+**An XGBoost pipeline that predicts IPO listing-day returns — feature engineering, time-series CV, calibrated confidence bands. No API key; seeds and trains itself on first boot.**
+
+[![CI](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml) [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![No API key](https://img.shields.io/badge/API%20key-none%20needed-brightgreen)](#quickstart)
+
+> **Live demo:** _pending deploy to Hugging Face Spaces (free CPU)._ Runs with no
+> key: on first boot it seeds the (synthetic) dataset and trains the models in
+> ~2 seconds, so nothing is committed as a stale binary. Screenshot below is the
+> app running locally from an empty clone, unedited.
+
+![IPO GMP Predictor dashboard: filters, hit-rate, GMP-vs-actual scatter](assets/demo.png)
+
+> ⚠️ **The dataset is synthetic.** Every metric here is a real cross-validation
+> result *on synthetic data* — it demonstrates the ML pipeline, not real-market
+> predictive power. Details in [Data](#data--read-this-before-quoting-any-metric-below).
+
+## Quickstart
+
+```bash
+git clone https://github.com/siddharthgaur1/ipo-gmp
+cd ipo-gmp
+pip install -r requirements.txt
+streamlit run src/app.py          # seeds data + trains models on first boot (~2s)
+```
+
+No API key, no external data, no cloud. Measured CV results (synthetic data):
+**MAE ≈ 12.7%**, **R² ≈ 0.87**, **directional accuracy ≈ 91%**, confidence band
+±4.7%. Security notes: [SECURITY.md](SECURITY.md).
+
+---
 
 Predicts Indian IPO listing-day returns from pre-listing Grey Market Premium
 (GMP) and subscription data. GMP alone is the strongest available pre-listing
