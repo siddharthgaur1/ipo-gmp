@@ -4,10 +4,9 @@
 
 [![CI](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml) [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![No API key](https://img.shields.io/badge/API%20key-none%20needed-brightgreen)](#quickstart)
 
-> **Live demo:** _pending deploy to Hugging Face Spaces (free CPU)._ Runs with no
-> key: on first boot it seeds the (synthetic) dataset and trains the models in
-> ~2 seconds, so nothing is committed as a stale binary. Screenshot below is the
-> app running locally from an empty clone, unedited.
+> **▶ Live demo: https://siddharthgaur1-siddharthipo-gmp-srcapp-htnhfl.streamlit.app/**
+> — clickable with **no API key** (Dashboard, Predictor, Backtest, Model Info tabs on
+> synthetic data). (First load may take ~30s if the app is asleep.)
 
 ![IPO GMP Predictor dashboard: filters, hit-rate, GMP-vs-actual scatter](assets/demo.png)
 
