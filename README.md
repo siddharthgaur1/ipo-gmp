@@ -137,6 +137,12 @@ expected, since those two are the closest proxies to how the synthetic
 target was generated. Everything past the top two contributes single-digit
 percentages.
 
+## Limitations
+
+Beyond the synthetic-data caveat above (which applies to every number in
+this README): see "What I'd improve with more time" below for the specific
+gaps in this build.
+
 ## What I'd improve with more time
 
 1. **Real data.** This is the actual gap, not a nice-to-have — replace
