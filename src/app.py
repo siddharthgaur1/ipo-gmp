@@ -198,9 +198,10 @@ with tab1:
         years = sorted(df["year"].dropna().unique().astype(int), reverse=True)
         sel_years = st.multiselect("Year", years, default=years[:3], key="dash_years")
     with fc2:
-        sel_cat = st.multiselect("Category", ["Mainboard", "SME"], default=["Mainboard", "SME"])
+        sel_cat = st.multiselect("Category", ["Mainboard", "SME"],
+                                 default=["Mainboard", "SME"], key="dash_cat")
     with fc3:
-        sel_sectors = st.multiselect("Sector", SECTORS, default=SECTORS[:6])
+        sel_sectors = st.multiselect("Sector", SECTORS, default=SECTORS[:6], key="dash_sectors")
 
     fdf = df.copy()
     if sel_years:
@@ -569,10 +570,14 @@ with tab4:
     st.markdown("### Full IPO Database")
 
     t_c1, t_c2, t_c3, t_c4 = st.columns(4)
-    t_search  = t_c1.text_input("Search company", placeholder="e.g. Bajaj")
-    t_cat     = t_c2.multiselect("Category", ["Mainboard", "SME"], default=["Mainboard", "SME"])
-    t_sector  = t_c3.multiselect("Sector", SECTORS, default=SECTORS)
-    t_min_sub = t_c4.slider("Min total subscription (x)", 0.0, 100.0, 0.0)
+    # Explicit keys: these repeat the Dashboard tab's label/options/default, and
+    # Streamlit derives widget ids from exactly those - without keys the two
+    # collide and the tab dies with StreamlitDuplicateElementId.
+    t_search  = t_c1.text_input("Search company", placeholder="e.g. Bajaj", key="tbl_search")
+    t_cat     = t_c2.multiselect("Category", ["Mainboard", "SME"],
+                                 default=["Mainboard", "SME"], key="tbl_cat")
+    t_sector  = t_c3.multiselect("Sector", SECTORS, default=SECTORS, key="tbl_sector")
+    t_min_sub = t_c4.slider("Min total subscription (x)", 0.0, 100.0, 0.0, key="tbl_min_sub")
 
     tdf = df.copy()
     if t_search:
