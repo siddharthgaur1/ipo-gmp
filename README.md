@@ -1,5 +1,10 @@
 # IPO GMP Predictor
 
+
+![IPO GMP Predictor dashboard with Dashboard, Predictor, Backtest and IPO Table tabs over synthetic IPO data](docs/demo.png)
+
+<sub>Live demo. Data is synthetic and labelled as such in-app.</sub>
+
 **An XGBoost pipeline that predicts IPO listing-day returns — feature engineering, time-series CV, calibrated confidence bands. No API key; seeds and trains itself on first boot.**
 
 [![CI](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml) [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![No API key](https://img.shields.io/badge/API%20key-none%20needed-brightgreen)](#quickstart)
