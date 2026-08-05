@@ -145,10 +145,10 @@ percentages.
 ## Limitations
 
 Beyond the synthetic-data caveat above (which applies to every number in
-this README): see "What I'd improve with more time" below for the specific
+this README): see "Limitations" below for the specific
 gaps in this build.
 
-## What I'd improve with more time
+## Limitations
 
 1. **Real data.** This is the actual gap, not a nice-to-have — replace
    `seed_data.py` with scraped/purchased historical IPO GMP + subscription +
