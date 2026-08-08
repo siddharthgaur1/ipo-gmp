@@ -15,9 +15,14 @@
 
 ![IPO GMP Predictor dashboard: filters, hit-rate, GMP-vs-actual scatter](assets/demo.png)
 
-> ⚠️ **The dataset is synthetic.** Every metric here is a real cross-validation
-> result *on synthetic data* — it demonstrates the ML pipeline, not real-market
-> predictive power. Details in [Data](#data--read-this-before-quoting-any-metric-below).
+> ⚠️ **The dataset is synthetic, and the metrics are circular.** The generator
+> builds the label out of the feature — `listing_gain_pct = 0.7 x gmp_pct +
+> noise` — so the model's 91.2% directional accuracy is it recovering that
+> formula, not predicting IPOs. **An oracle that knows the formula exactly
+> scores 0.910 / R² 0.872; the model scores 0.912 / 0.871.** It is at the
+> ceiling. Verify with `python scripts/oracle_ceiling.py`. Read
+> [Why these numbers cannot mean what they look like](#why-these-numbers-cannot-mean-what-they-look-like)
+> before quoting anything here.
 
 ## Quickstart
 
@@ -125,6 +130,53 @@ the two raw columns, made the signal show up cleanly in feature importance.
 UI).** A true walk-forward backtest — refitting the model at each point in
 time using only data available then — is the honest version of this and
 isn't implemented yet; see "What I'd improve."
+
+## Why these numbers cannot mean what they look like
+
+`scripts/seed_data.py:85` constructs the target directly from the strongest
+feature:
+
+```python
+signal           = gmp_pct * rng.uniform(0.5, 0.9)   # GMP "captures" 50-90% of the move
+noise            = rng.gauss(0, 0.12)
+listing_gain_pct = (signal + noise) * 100
+```
+
+`gmp_pct` is `FEATURE_COLS[0]`. So the label *is* the feature, scaled by 0.7 on
+average, plus injected noise. There is exactly one relationship in this dataset
+and the generator wrote it.
+
+That puts a hard ceiling on any model. Predicting `0.7 x gmp_pct` is optimal —
+the remainder is noise by construction — and re-running the generator's own
+arithmetic 200,000 times gives that ceiling:
+
+| | Oracle (knows the formula) | Trained XGBoost |
+|---|---|---|
+| Directional accuracy | 0.910 | **0.912** |
+| R² | 0.872 | **0.871** |
+
+Reproduce: `python scripts/oracle_ceiling.py`.
+
+The model is at the ceiling. That is a correct result for the pipeline — CV,
+time-series splitting and the ensemble all work — and it is worth **nothing** as
+a claim about IPOs. A constant `0.7 x gmp_pct` scores the same.
+
+### Why this is not fixed by swapping in real data
+
+The obvious repair is real IPO data, and it is not available. **Grey market
+premium is unpublished by definition** — an informal dealer quote with no
+official source. NSE, BSE and SEBI do not publish it; there is no archive to
+fetch. The sibling [nse-warehouse](https://github.com/siddharthgaur1/nse-warehouse)
+holds 1.13M real bhavcopy rows and can identify real listing events and their
+day-one returns, but it has no GMP column and no official source can supply one.
+
+So the honest position is:
+
+- **The pipeline is real** and is what this repo demonstrates.
+- **The metrics measure the generator**, and the table above proves it rather
+  than asserting it.
+- Making this a genuine forecasting result needs a GMP series scraped from
+  aggregator sites over months — a data-collection project, not a modelling one.
 
 ## Performance (from an actual run — synthetic data, see above)
 
