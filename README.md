@@ -1,5 +1,8 @@
 # IPO GMP Predictor
 
+[![Portfolio](https://img.shields.io/badge/↩-siddharthgaur1-111827?style=flat-square)](https://github.com/siddharthgaur1)
+[![CI](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/ipo-gmp/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ![IPO GMP Predictor dashboard with Dashboard, Predictor, Backtest and IPO Table tabs over synthetic IPO data](docs/demo.png)
 
