@@ -111,7 +111,7 @@ python src/model.py           # trains + saves models/*.pkl, models/meta.json (~
 
 ```bash
 streamlit run src/app.py
-pytest tests/ -v               # 19 tests
+pytest tests/ -v               # 23 tests
 ```
 
 ## Design decisions
